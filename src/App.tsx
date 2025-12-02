@@ -14,11 +14,12 @@ import image_product_4_thumbnail from './assets/images/image-product-4-thumbnail
 import icon_minus from './assets/images/icon-minus.svg'
 import icon_plus from './assets/images/icon-plus.svg'
 import icon_menu from './assets/images/icon-menu.svg'
-
+import icon_close from './assets/images/icon-close.svg'
 
 function App() {
   const [thumb, setThumb] = useState(1);
   const [amount, setAmount] = useState(0);
+  const [openLightBox, setOpenLightBox] = useState(false);
 
   const incrementAmount = () => {
     setAmount(amount + 1);
@@ -35,6 +36,19 @@ function App() {
 
   return (
     <div className='lg:px-30 font-display lg:space-y-3'>
+      {openLightBox ? <div className="fixed inset-0 bg-black/60 z-90 h-screen w-screen flex flex-col justify-center items-center space-y-3">
+        
+          <div onClick={() => setOpenLightBox(false)} className='bg-white p-5 rounded-full hover:cursor-pointer hover:bg-gray-200 duration-300 ease-in-out'>
+            <img  src={icon_close} alt="" />
+          </div>
+          {thumb === 1 ? <img className='md:rounded-xl w-[25%]' src={image_product_1} alt="" /> 
+            : thumb === 2 ? <img className='md:rounded-xl  w-[25%]' src={image_product_2} alt="" /> :
+            thumb === 3 ? <img className='md:rounded-xl w-[25%]' src={image_product_3} alt="" />
+          : <img className='md:rounded-xl w-[25%]' src={image_product_4} alt="" />}
+       
+        
+      </div>: null}
+
       <div className='sticky top-0 p-5 bg-white z-50 flex justify-between lg:border-b border-gray-200'>
         <div className='flex justify-start items-center gap-15'>
           <div className='flex flex-row justify-center gap-3 items-center'>
@@ -57,12 +71,14 @@ function App() {
       </div>
       
 
-      <div className='flex flex-col md:flex-row md:h-screen md:p-5 justify-center items-center xl:px-20 xl:py-5 gap-5 xl:gap-10'>
-        <div className='flex justify-center items-center flex-col gap-2 w-full md:w-1/2'>
-            {thumb === 1 ? <img className='md:rounded-xl w-screen md:w-[80%]' src={image_product_1} alt="" /> 
-            : thumb === 2 ? <img className='md:rounded-xl w-screen md:w-[80%]' src={image_product_2} alt="" /> :
-            thumb === 3 ? <img className='md:rounded-xl w-screen md:w-[80%]' src={image_product_3} alt="" />
-          : <img className='md:rounded-xl w-screen md:w-[80%]' src={image_product_4} alt="" />}
+      <div className='flex flex-col md:flex-row md:h-screen xl:h-full md:p-5 justify-center items-center xl:px-20 xl:py-5 gap-5 xl:gap-10'>
+        <div className='flex justify-center items-center flex-col gap-4 w-full md:w-1/2'>
+            
+              {thumb === 1 ? <img onClick={() => setOpenLightBox(true)} className='md:rounded-xl w-screen md:w-[80%] hover:cursor-pointer hover:shadow-orange-400 shadow-md duration-500 ease-in-out' src={image_product_1} alt="" /> 
+            : thumb === 2 ? <img onClick={() => setOpenLightBox(true)} className='md:rounded-xl w-screen md:w-[80%] hover:cursor-pointer hover:shadow-orange-400 shadow-md duration-500 ease-in-out' src={image_product_2} alt="" /> :
+            thumb === 3 ? <img onClick={() => setOpenLightBox(true)} className='md:rounded-xl w-screen md:w-[80%] hover:cursor-pointer hover:shadow-orange-400 shadow-md duration-500 ease-in-out' src={image_product_3} alt="" />
+          : <img onClick={() => setOpenLightBox(true)} className='md:rounded-xl w-screen md:w-[80%] hover:cursor-pointer hover:shadow-orange-400 shadow-md duration-500 ease-in-out' src={image_product_4} alt="" />}
+            
           <div className='md:flex hidden justify-center items-center gap-5'>
             
             <div onClick={() => setThumb(1)} className={`relative group w-20 hover:cursor-pointer ${thumb === 1 ? `outline-3 rounded-xl outline-orange-600` 
@@ -116,12 +132,12 @@ function App() {
           
 
           <div className='flex flex-col md:flex-row gap-4 justify-start items-center'>
-            <div className='flex justify-between md:justify-center md:w-1/2 items-center gap-8 bg-gray-100 p-3 rounded-lg w-full'>
-              <img onClick={decrementAmount} src={icon_minus} alt="" />
+            <div className='flex justify-between items-center gap-8 bg-gray-100 p-3 rounded-lg w-full'>
+              <img className='hover:cursor-pointer' onClick={decrementAmount} src={icon_minus} alt="" />
               <span className='font-bold'>{amount}</span>
-              <img onClick={incrementAmount} src={icon_plus} alt="" />
+              <img className='hover:cursor-pointer' onClick={incrementAmount} src={icon_plus} alt="" />
             </div>
-          <div className='bg-orange-400 flex justify-center items-center w-full py-3 rounded-lg gap-2'>
+          <div className='bg-orange-400 flex justify-center items-center w-full py-3 rounded-lg gap-2 hover:bg-orange-300 hover:cursor-pointer duration-300 ease-in-out'>
             <img className='lg:w-[10%]' src={cart} alt="Shopping cart icon" />
             
             <span className='font-bold'>
