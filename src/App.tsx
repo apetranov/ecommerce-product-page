@@ -4,22 +4,44 @@ import logo from './assets/images/logo.svg'
 import cart from './assets/images/icon-cart.svg'
 import avatar from './assets/images/image-avatar.png'
 import image_product_1 from './assets/images/image-product-1.jpg'
+import image_product_2 from './assets/images/image-product-2.jpg'
+import image_product_3 from './assets/images/image-product-3.jpg'
+import image_product_4 from './assets/images/image-product-4.jpg'
 import image_product_1_thumbnail from './assets/images/image-product-1-thumbnail.jpg'
 import image_product_2_thumbnail from './assets/images/image-product-2-thumbnail.jpg'
 import image_product_3_thumbnail from './assets/images/image-product-3-thumbnail.jpg'
 import image_product_4_thumbnail from './assets/images/image-product-4-thumbnail.jpg'
 import icon_minus from './assets/images/icon-minus.svg'
 import icon_plus from './assets/images/icon-plus.svg'
+import icon_menu from './assets/images/icon-menu.svg'
 
 
 function App() {
+  const [thumb, setThumb] = useState(1);
+  const [amount, setAmount] = useState(0);
+
+  const incrementAmount = () => {
+    setAmount(amount + 1);
+  }
+
+  const decrementAmount = () => {
+    if (amount === 0) {
+      alert("Product amount cannot be less than 0.");
+      setAmount(0);
+      return;
+    }
+    setAmount(amount - 1);
+  }
 
   return (
     <div className='lg:px-30 font-display lg:space-y-3'>
-      <div className='p-5 flex justify-between lg:border-b border-gray-200'>
+      <div className='sticky top-0 p-5 bg-white z-50 flex justify-between lg:border-b border-gray-200'>
         <div className='flex justify-start items-center gap-15'>
-          <img className='w-full' src={logo} alt="Sneakers brand logo" />
-          <div className='hidden text-gray-500 lg:flex gap-5'>
+          <div className='flex flex-row justify-center gap-3 items-center'>
+            <img className='flex md:hidden' src={icon_menu} alt="Hamburger menu icon" />
+            <img className='w-full' src={logo} alt="Sneakers brand logo" />
+          </div>
+          <div className='hidden text-gray-500 md:flex gap-5'>
             <span>Collections</span>
             <span>Men</span>
             <span>Women</span>
@@ -29,38 +51,46 @@ function App() {
         </div>
         
         <div className='flex flex-row justify-center items-center gap-4 md:gap-10'>
-          <img className='w-[30%] md:w-[15%]' src={cart} alt="Shopping cart icon" />
+          <img className='w-[20%] md:w-[15%]' src={cart} alt="Shopping cart icon" />
           <img className='w-[30%] md:w-[30%]' src={avatar} alt="Avatar image" />
         </div>
       </div>
       
 
-      <div className='flex flex-col md:flex-row justify-center items-center xl:px-20 xl:py-5 gap-5 xl:gap-10'>
+      <div className='flex flex-col md:flex-row md:h-screen md:p-5 justify-center items-center xl:px-20 xl:py-5 gap-5 xl:gap-10'>
         <div className='flex justify-center items-center flex-col gap-2 w-full md:w-1/2'>
-            <img className='md:rounded-xl w-screen md:w-[80%]' src={image_product_1} alt="" />
+            {thumb === 1 ? <img className='md:rounded-xl w-screen md:w-[80%]' src={image_product_1} alt="" /> 
+            : thumb === 2 ? <img className='md:rounded-xl w-screen md:w-[80%]' src={image_product_2} alt="" /> :
+            thumb === 3 ? <img className='md:rounded-xl w-screen md:w-[80%]' src={image_product_3} alt="" />
+          : <img className='md:rounded-xl w-screen md:w-[80%]' src={image_product_4} alt="" />}
           <div className='md:flex hidden justify-center items-center gap-5'>
-            <div className="relative group w-20 hover:cursor-pointer">
+            
+            <div onClick={() => setThumb(1)} className={`relative group w-20 hover:cursor-pointer ${thumb === 1 ? `outline-3 rounded-xl outline-orange-600` 
+              : ``}`}>
               <img className='w-full rounded-xl' src={image_product_1_thumbnail} alt="" />
               <div
-                className="rounded-xl absolute inset-0 bg-white/50 opacity-0 group-hover:opacity-100 transition-opacity"
+                className={`rounded-xl absolute inset-0 bg-white/50 opacity-0 ${thumb === 1 ? `opacity-100` : `group-hover:opacity-100` } transition-opacity`}
               ></div>
             </div>
-            <div className="relative w-20 group hover:cursor-pointer">
+            <div onClick={() => setThumb(2)} className={`relative w-20 group hover:cursor-pointer ${thumb === 2 ? `outline-3 rounded-xl outline-orange-600` 
+              : ``}`}>
               <img className='w-full rounded-xl' src={image_product_2_thumbnail} alt="" />
               <div
-                className="rounded-xl absolute inset-0 bg-white/50 opacity-0 group-hover:opacity-100 transition-opacity"
+                className={`rounded-xl absolute inset-0 bg-white/50 opacity-0 ${thumb === 2 ? `opacity-100` : `group-hover:opacity-100` } transition-opacity`}
               ></div>
             </div>
-            <div className="relative w-20 group hover:cursor-pointer">
+            <div onClick={() => setThumb(3)} className={`relative w-20 group hover:cursor-pointer ${thumb === 3 ? `outline-3 rounded-xl outline-orange-600` 
+              : ``}`}>
               <img className='w-full rounded-xl' src={image_product_3_thumbnail} alt="" />
               <div
-                className="rounded-xl absolute inset-0 bg-white/50 opacity-0 group-hover:opacity-100 transition-opacity"
+                className={`rounded-xl absolute inset-0 bg-white/50 opacity-0 ${thumb === 3 ? `opacity-100` : `group-hover:opacity-100` } transition-opacity`}
               ></div>
             </div>
-            <div className="relative w-20 group hover:cursor-pointer">
+            <div onClick={() => setThumb(4)} className={`relative w-20 group hover:cursor-pointer ${thumb === 4 ? `outline-3 rounded-xl outline-orange-600` 
+              : ``}`}>
               <img className='w-full rounded-xl' src={image_product_4_thumbnail} alt="" />
               <div
-                className="rounded-xl absolute inset-0 bg-white/50 opacity-0 group-hover:opacity-100 transition-opacity"
+                className={`rounded-xl absolute inset-0 bg-white/50 opacity-0 ${thumb === 4 ? `opacity-100` : `group-hover:opacity-100` } transition-opacity`}
               ></div>
             </div>         
           </div>
@@ -85,11 +115,11 @@ function App() {
 
           
 
-          <div className='flex flex-col lg:flex-row gap-4 justify-start items-center'>
-            <div className='flex justify-between items-center gap-8 bg-gray-100 p-3 rounded-lg w-full'>
-              <img  src={icon_minus} alt="" />
-              <span className='font-bold'>0</span>
-              <img src={icon_plus} alt="" />
+          <div className='flex flex-col md:flex-row gap-4 justify-start items-center'>
+            <div className='flex justify-between md:justify-center md:w-1/2 items-center gap-8 bg-gray-100 p-3 rounded-lg w-full'>
+              <img onClick={decrementAmount} src={icon_minus} alt="" />
+              <span className='font-bold'>{amount}</span>
+              <img onClick={incrementAmount} src={icon_plus} alt="" />
             </div>
           <div className='bg-orange-400 flex justify-center items-center w-full py-3 rounded-lg gap-2'>
             <img className='lg:w-[10%]' src={cart} alt="Shopping cart icon" />
