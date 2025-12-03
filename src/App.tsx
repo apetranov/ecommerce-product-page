@@ -52,6 +52,8 @@ function App() {
   const currentImage = images[thumb - 1];  // thumb is 1–4
   const total = images.length;
 
+  const currentLightboxImage = images[lightBoxThumb - 1];
+
 
   return (
     <div className='lg:px-30 font-display lg:space-y-3'>
@@ -60,10 +62,29 @@ function App() {
           <div onClick={() => setOpenLightBox(false)} className='bg-white p-5 rounded-full hover:cursor-pointer hover:bg-gray-200 duration-300 ease-in-out'>
             <img  src={icon_close} alt="" />
           </div>
-          {lightBoxThumb === 1 ? <img className='md:rounded-xl w-[25%]' src={image_product_1} alt="" /> 
-            : lightBoxThumb === 2 ? <img className='md:rounded-xl  w-[25%]' src={image_product_2} alt="" /> :
-            lightBoxThumb === 3 ? <img className='md:rounded-xl w-[25%]' src={image_product_3} alt="" />
-          : <img className='md:rounded-xl w-[25%]' src={image_product_4} alt="" />}
+
+          <div className='overflow-hidden relative flex justify-center items-center w-[30%]'>
+            {lightBoxThumb === 1 ? <img className='md:rounded-xl w-full' src={image_product_1} alt="" /> 
+            : lightBoxThumb === 2 ? <img className='md:rounded-xl  w-full' src={image_product_2} alt="" /> :
+            lightBoxThumb === 3 ? <img className='md:rounded-xl w-full' src={image_product_3} alt="" />
+            : <img className='md:rounded-xl w-full' src={image_product_4} alt="" />}
+
+            <div className='absolute inset-0 flex items-center justify-between p-4'>
+              <button
+                onClick={() => setLightBoxThumb(lightBoxThumb === 1 ? 4 : lightBoxThumb - 1)}
+                className='bg-black/50 text-white p-3 rounded-full hover:bg-black/70 transition'
+              >
+                ‹
+              </button>
+              <button
+                onClick={() => setLightBoxThumb(lightBoxThumb === 4 ? 1 : lightBoxThumb + 1)}
+                className='bg-black/50 text-white p-3 rounded-full hover:bg-black/70 transition'
+              >
+                ›
+              </button>
+            </div>
+          </div>
+
 
         <div className='md:flex hidden justify-center items-center gap-5'>
             

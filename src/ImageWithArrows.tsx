@@ -1,3 +1,5 @@
+import useScreenWidth from "./useScreenWidth";
+
 type ImageWithArrowsProps = {
   image: string;
   thumb: number;
