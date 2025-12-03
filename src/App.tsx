@@ -15,6 +15,7 @@ import icon_minus from './assets/images/icon-minus.svg'
 import icon_plus from './assets/images/icon-plus.svg'
 import icon_menu from './assets/images/icon-menu.svg'
 import icon_close from './assets/images/icon-close.svg'
+import useScreenWidth from "./useScreenWidth";
 
 function App() {
   const [thumb, setThumb] = useState(1);
@@ -34,6 +35,11 @@ function App() {
     }
     setAmount(amount - 1);
   }
+
+  const width = useScreenWidth();
+
+  const isMobile = width < 768;                   // mobile breakpoint
+  const isMedium = width >= 768;  // medium breakpoint
 
   return (
     <div className='lg:px-30 font-display lg:space-y-3'>
@@ -106,20 +112,29 @@ function App() {
         <div className='flex justify-center items-center flex-col gap-4 w-full md:w-1/2'>
             
               {thumb === 1 ? <img onClick={() => {
-                setOpenLightBox(true);
-                setLightBoxThumb(thumb);
+                if (isMedium) {
+                  setOpenLightBox(true);
+                  setLightBoxThumb(thumb);
+                }
+                
               }} className='md:rounded-xl w-screen md:w-[80%] hover:cursor-pointer hover:shadow-orange-400 shadow-md duration-500 ease-in-out' src={image_product_1} alt="" /> 
             : thumb === 2 ? <img onClick={() => {
-              setOpenLightBox(true);
-              setLightBoxThumb(thumb);
+              if (isMedium) {
+                setOpenLightBox(true);
+                setLightBoxThumb(thumb);
+              }
             }} className='md:rounded-xl w-screen md:w-[80%] hover:cursor-pointer hover:shadow-orange-400 shadow-md duration-500 ease-in-out' src={image_product_2} alt="" /> :
             thumb === 3 ? <img onClick={() => {
-              setOpenLightBox(true);
-              setLightBoxThumb(thumb);
+              if (isMedium) {
+                setOpenLightBox(true);
+                setLightBoxThumb(thumb);
+              }
             }} className='md:rounded-xl w-screen md:w-[80%] hover:cursor-pointer hover:shadow-orange-400 shadow-md duration-500 ease-in-out' src={image_product_3} alt="" />
           : <img onClick={() => {
-            setOpenLightBox(true);
-            setLightBoxThumb(4);
+              if (isMedium) {
+                setOpenLightBox(true);
+                setLightBoxThumb(4);
+              }
           }} className='md:rounded-xl w-screen md:w-[80%] hover:cursor-pointer hover:shadow-orange-400 shadow-md duration-500 ease-in-out' src={image_product_4} alt="" />}
             
           <div className='md:flex hidden justify-center items-center gap-5'>
