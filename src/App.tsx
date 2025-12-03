@@ -57,7 +57,7 @@ function App() {
 
   return (
     <div className='lg:px-30 font-display lg:space-y-3'>
-      {openLightBox ? <div className="fixed inset-0 bg-black/60 z-90 h-screen w-screen flex flex-col justify-center items-center space-y-3">
+      {openLightBox && isMedium ? <div className="fixed inset-0 bg-black/60 z-90 h-screen w-screen flex flex-col justify-center items-center space-y-3">
         
           <div onClick={() => setOpenLightBox(false)} className='bg-white p-5 rounded-full hover:cursor-pointer hover:bg-gray-200 duration-300 ease-in-out'>
             <img  src={icon_close} alt="" />
