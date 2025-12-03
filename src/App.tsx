@@ -20,6 +20,7 @@ function App() {
   const [thumb, setThumb] = useState(1);
   const [amount, setAmount] = useState(0);
   const [openLightBox, setOpenLightBox] = useState(false);
+  const [lightBoxThumb, setLightBoxThumb] = useState(thumb);
 
   const incrementAmount = () => {
     setAmount(amount + 1);
@@ -41,12 +42,42 @@ function App() {
           <div onClick={() => setOpenLightBox(false)} className='bg-white p-5 rounded-full hover:cursor-pointer hover:bg-gray-200 duration-300 ease-in-out'>
             <img  src={icon_close} alt="" />
           </div>
-          {thumb === 1 ? <img className='md:rounded-xl w-[25%]' src={image_product_1} alt="" /> 
-            : thumb === 2 ? <img className='md:rounded-xl  w-[25%]' src={image_product_2} alt="" /> :
-            thumb === 3 ? <img className='md:rounded-xl w-[25%]' src={image_product_3} alt="" />
+          {lightBoxThumb === 1 ? <img className='md:rounded-xl w-[25%]' src={image_product_1} alt="" /> 
+            : lightBoxThumb === 2 ? <img className='md:rounded-xl  w-[25%]' src={image_product_2} alt="" /> :
+            lightBoxThumb === 3 ? <img className='md:rounded-xl w-[25%]' src={image_product_3} alt="" />
           : <img className='md:rounded-xl w-[25%]' src={image_product_4} alt="" />}
-       
-        
+
+        <div className='md:flex hidden justify-center items-center gap-5'>
+            
+            <div onClick={() => setLightBoxThumb(1)} className={`relative group w-20 hover:cursor-pointer ${lightBoxThumb === 1 ? `outline-3 rounded-xl outline-orange-600` 
+              : ``}`}>
+              <img className='w-full rounded-xl' src={image_product_1_thumbnail} alt="" />
+              <div
+                className={`rounded-xl absolute inset-0 bg-white/50 opacity-0 ${lightBoxThumb === 1 ? `opacity-100` : `group-hover:opacity-100` } transition-opacity`}
+              ></div>
+            </div>
+            <div onClick={() => setLightBoxThumb(2)} className={`relative w-20 group hover:cursor-pointer ${lightBoxThumb === 2 ? `outline-3 rounded-xl outline-orange-600` 
+              : ``}`}>
+              <img className='w-full rounded-xl' src={image_product_2_thumbnail} alt="" />
+              <div
+                className={`rounded-xl absolute inset-0 bg-white/50 opacity-0 ${lightBoxThumb === 2 ? `opacity-100` : `group-hover:opacity-100` } transition-opacity`}
+              ></div>
+            </div>
+            <div onClick={() => setLightBoxThumb(3)} className={`relative w-20 group hover:cursor-pointer ${lightBoxThumb === 3 ? `outline-3 rounded-xl outline-orange-600` 
+              : ``}`}>
+              <img className='w-full rounded-xl' src={image_product_3_thumbnail} alt="" />
+              <div
+                className={`rounded-xl absolute inset-0 bg-white/50 opacity-0 ${lightBoxThumb === 3 ? `opacity-100` : `group-hover:opacity-100` } transition-opacity`}
+              ></div>
+            </div>
+            <div onClick={() => setLightBoxThumb(4)} className={`relative w-20 group hover:cursor-pointer ${lightBoxThumb === 4 ? `outline-3 rounded-xl outline-orange-600` 
+              : ``}`}>
+              <img className='w-full rounded-xl' src={image_product_4_thumbnail} alt="" />
+              <div
+                className={`rounded-xl absolute inset-0 bg-white/50 opacity-0 ${lightBoxThumb === 4 ? `opacity-100` : `group-hover:opacity-100` } transition-opacity`}
+              ></div>
+            </div>         
+          </div>
       </div>: null}
 
       <div className='sticky top-0 p-5 bg-white z-50 flex justify-between lg:border-b border-gray-200'>
@@ -74,10 +105,22 @@ function App() {
       <div className='flex flex-col md:flex-row md:h-screen xl:h-full md:p-5 justify-center items-center xl:px-20 xl:py-5 gap-5 xl:gap-10'>
         <div className='flex justify-center items-center flex-col gap-4 w-full md:w-1/2'>
             
-              {thumb === 1 ? <img onClick={() => setOpenLightBox(true)} className='md:rounded-xl w-screen md:w-[80%] hover:cursor-pointer hover:shadow-orange-400 shadow-md duration-500 ease-in-out' src={image_product_1} alt="" /> 
-            : thumb === 2 ? <img onClick={() => setOpenLightBox(true)} className='md:rounded-xl w-screen md:w-[80%] hover:cursor-pointer hover:shadow-orange-400 shadow-md duration-500 ease-in-out' src={image_product_2} alt="" /> :
-            thumb === 3 ? <img onClick={() => setOpenLightBox(true)} className='md:rounded-xl w-screen md:w-[80%] hover:cursor-pointer hover:shadow-orange-400 shadow-md duration-500 ease-in-out' src={image_product_3} alt="" />
-          : <img onClick={() => setOpenLightBox(true)} className='md:rounded-xl w-screen md:w-[80%] hover:cursor-pointer hover:shadow-orange-400 shadow-md duration-500 ease-in-out' src={image_product_4} alt="" />}
+              {thumb === 1 ? <img onClick={() => {
+                setOpenLightBox(true);
+                setLightBoxThumb(thumb);
+              }} className='md:rounded-xl w-screen md:w-[80%] hover:cursor-pointer hover:shadow-orange-400 shadow-md duration-500 ease-in-out' src={image_product_1} alt="" /> 
+            : thumb === 2 ? <img onClick={() => {
+              setOpenLightBox(true);
+              setLightBoxThumb(thumb);
+            }} className='md:rounded-xl w-screen md:w-[80%] hover:cursor-pointer hover:shadow-orange-400 shadow-md duration-500 ease-in-out' src={image_product_2} alt="" /> :
+            thumb === 3 ? <img onClick={() => {
+              setOpenLightBox(true);
+              setLightBoxThumb(thumb);
+            }} className='md:rounded-xl w-screen md:w-[80%] hover:cursor-pointer hover:shadow-orange-400 shadow-md duration-500 ease-in-out' src={image_product_3} alt="" />
+          : <img onClick={() => {
+            setOpenLightBox(true);
+            setLightBoxThumb(4);
+          }} className='md:rounded-xl w-screen md:w-[80%] hover:cursor-pointer hover:shadow-orange-400 shadow-md duration-500 ease-in-out' src={image_product_4} alt="" />}
             
           <div className='md:flex hidden justify-center items-center gap-5'>
             
