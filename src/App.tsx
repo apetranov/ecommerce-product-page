@@ -63,7 +63,7 @@ function App() {
             <img  src={icon_close} alt="" />
           </div>
 
-          <div className='overflow-hidden relative flex justify-center items-center w-[30%]'>
+          <div className='overflow-hidden relative flex justify-center items-center md:w-[40%] lg:w-[30%]'>
             {lightBoxThumb === 1 ? <img className='md:rounded-xl w-full' src={image_product_1} alt="" /> 
             : lightBoxThumb === 2 ? <img className='md:rounded-xl  w-full' src={image_product_2} alt="" /> :
             lightBoxThumb === 3 ? <img className='md:rounded-xl w-full' src={image_product_3} alt="" />
@@ -208,7 +208,7 @@ function App() {
             </div>
 
           <div className='flex flex-col gap-5'>
-            <p className='text-gray-500 text-sm lg:text-base'>These low-profile sneakers are your perfect casual wear companion. Featuring a 
+            <p className='text-gray-500 text-xs lg:text-sm xl:text-base'>These low-profile sneakers are your perfect casual wear companion. Featuring a 
           durable rubber outer sole, they’ll withstand everything the weather can offer.</p>
 
           <div className='flex md:flex-col flex-row justify-between gap-4'>
