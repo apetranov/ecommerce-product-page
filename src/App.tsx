@@ -16,6 +16,7 @@ import icon_plus from './assets/images/icon-plus.svg'
 import icon_menu from './assets/images/icon-menu.svg'
 import icon_close from './assets/images/icon-close.svg'
 import useScreenWidth from "./useScreenWidth";
+import ImageWithArrows from './ImageWithArrows'
 
 function App() {
   const [thumb, setThumb] = useState(1);
@@ -40,6 +41,17 @@ function App() {
 
   const isMobile = width < 768;                   // mobile breakpoint
   const isMedium = width >= 768;  // medium breakpoint
+
+  const images = [
+    image_product_1,
+    image_product_2,
+    image_product_3,
+    image_product_4,
+  ];
+
+  const currentImage = images[thumb - 1];  // thumb is 1–4
+  const total = images.length;
+
 
   return (
     <div className='lg:px-30 font-display lg:space-y-3'>
@@ -110,33 +122,32 @@ function App() {
 
       <div className='flex flex-col md:flex-row md:h-screen xl:h-full md:p-5 justify-center items-center xl:px-20 xl:py-5 gap-5 xl:gap-10'>
         <div className='flex justify-center items-center flex-col gap-4 w-full md:w-1/2'>
-            
-              {thumb === 1 ? <img onClick={() => {
-                if (isMedium) {
-                  setOpenLightBox(true);
-                  setLightBoxThumb(thumb);
-                }
-                
-              }} className='md:rounded-xl w-screen md:w-[80%] hover:cursor-pointer hover:shadow-orange-400 shadow-md duration-500 ease-in-out' src={image_product_1} alt="" /> 
-            : thumb === 2 ? <img onClick={() => {
-              if (isMedium) {
-                setOpenLightBox(true);
-                setLightBoxThumb(thumb);
+             
+              {
+                isMobile 
+                  ? (
+                      <ImageWithArrows 
+                        image={currentImage}
+                        thumb={thumb}
+                        setThumb={setThumb}
+                        maxThumb={total}
+                      />
+                    )
+                  : (
+                      <img
+                        onClick={() => {
+                          if (isMedium) {
+                            setOpenLightBox(true);
+                            setLightBoxThumb(thumb);
+                          }
+                        }}
+                        className="md:rounded-xl w-screen md:w-[80%] hover:cursor-pointer hover:shadow-orange-400 shadow-md duration-500 ease-in-out"
+                        src={currentImage}
+                        alt=""
+                      />
+                    )
               }
-            }} className='md:rounded-xl w-screen md:w-[80%] hover:cursor-pointer hover:shadow-orange-400 shadow-md duration-500 ease-in-out' src={image_product_2} alt="" /> :
-            thumb === 3 ? <img onClick={() => {
-              if (isMedium) {
-                setOpenLightBox(true);
-                setLightBoxThumb(thumb);
-              }
-            }} className='md:rounded-xl w-screen md:w-[80%] hover:cursor-pointer hover:shadow-orange-400 shadow-md duration-500 ease-in-out' src={image_product_3} alt="" />
-          : <img onClick={() => {
-              if (isMedium) {
-                setOpenLightBox(true);
-                setLightBoxThumb(4);
-              }
-          }} className='md:rounded-xl w-screen md:w-[80%] hover:cursor-pointer hover:shadow-orange-400 shadow-md duration-500 ease-in-out' src={image_product_4} alt="" />}
-            
+  
           <div className='md:flex hidden justify-center items-center gap-5'>
             
             <div onClick={() => setThumb(1)} className={`relative group w-20 hover:cursor-pointer ${thumb === 1 ? `outline-3 rounded-xl outline-orange-600` 
