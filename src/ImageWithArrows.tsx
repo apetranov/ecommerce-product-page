@@ -25,7 +25,7 @@ export default function ImageWithArrows({
           -translate-y-1/2 
           bg-black/50 text-white 
           p-3 rounded-full 
-          hover:bg-black/70 transition
+          hover:bg-black/70 transition hover:cursor-pointer
         "
       >
         ‹
@@ -39,7 +39,7 @@ export default function ImageWithArrows({
           -translate-y-1/2
           bg-black/50 text-white 
           p-3 rounded-full
-          hover:bg-black/70 transition
+          hover:bg-black/70 transition hover:cursor-pointer
         "
       >
         ›
