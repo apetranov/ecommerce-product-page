@@ -88,28 +88,28 @@ function App() {
 
         <div className='md:flex hidden justify-center items-center gap-5'>
             
-            <div onClick={() => setLightBoxThumb(1)} className={`relative group w-20 hover:cursor-pointer ${lightBoxThumb === 1 ? `outline-3 rounded-xl outline-orange-600` 
+            <div onClick={() => setLightBoxThumb(1)} className={`relative w-15 xl:w-18 hover:cursor-pointer ${lightBoxThumb === 1 ? `outline-3 rounded-xl outline-orange-600` 
               : ``}`}>
               <img className='w-full rounded-xl' src={image_product_1_thumbnail} alt="" />
               <div
                 className={`rounded-xl absolute inset-0 bg-white/50 opacity-0 ${lightBoxThumb === 1 ? `opacity-100` : `group-hover:opacity-100` } transition-opacity`}
               ></div>
             </div>
-            <div onClick={() => setLightBoxThumb(2)} className={`relative w-20 group hover:cursor-pointer ${lightBoxThumb === 2 ? `outline-3 rounded-xl outline-orange-600` 
+            <div onClick={() => setLightBoxThumb(2)} className={`relative w-15 xl:w-18 group hover:cursor-pointer ${lightBoxThumb === 2 ? `outline-3 rounded-xl outline-orange-600` 
               : ``}`}>
               <img className='w-full rounded-xl' src={image_product_2_thumbnail} alt="" />
               <div
                 className={`rounded-xl absolute inset-0 bg-white/50 opacity-0 ${lightBoxThumb === 2 ? `opacity-100` : `group-hover:opacity-100` } transition-opacity`}
               ></div>
             </div>
-            <div onClick={() => setLightBoxThumb(3)} className={`relative w-20 group hover:cursor-pointer ${lightBoxThumb === 3 ? `outline-3 rounded-xl outline-orange-600` 
+            <div onClick={() => setLightBoxThumb(3)} className={`relative w-15 xl:w-18 group hover:cursor-pointer ${lightBoxThumb === 3 ? `outline-3 rounded-xl outline-orange-600` 
               : ``}`}>
               <img className='w-full rounded-xl' src={image_product_3_thumbnail} alt="" />
               <div
                 className={`rounded-xl absolute inset-0 bg-white/50 opacity-0 ${lightBoxThumb === 3 ? `opacity-100` : `group-hover:opacity-100` } transition-opacity`}
               ></div>
             </div>
-            <div onClick={() => setLightBoxThumb(4)} className={`relative w-20 group hover:cursor-pointer ${lightBoxThumb === 4 ? `outline-3 rounded-xl outline-orange-600` 
+            <div onClick={() => setLightBoxThumb(4)} className={`relative w-15 xl:w-18 group hover:cursor-pointer ${lightBoxThumb === 4 ? `outline-3 rounded-xl outline-orange-600` 
               : ``}`}>
               <img className='w-full rounded-xl' src={image_product_4_thumbnail} alt="" />
               <div
@@ -141,7 +141,7 @@ function App() {
       </div>
       
 
-      <div className='flex flex-col md:flex-row md:h-screen xl:h-full md:p-5 justify-center items-center xl:px-20 xl:py-5 gap-5 xl:gap-10'>
+      <div className='flex flex-col md:flex-row md:h-screen 2xl:h-full md:p-5 justify-center items-center xl:px-20 xl:py-5 gap-5 xl:gap-10'>
         <div className='flex justify-center items-center flex-col gap-4 w-full md:w-1/2'>
              
               {
@@ -169,30 +169,30 @@ function App() {
                     )
               }
   
-          <div className='md:flex hidden justify-center items-center gap-5'>
+          <div className='md:flex hidden justify-center items-center gap-4 lg:gap-5'>
             
-            <div onClick={() => setThumb(1)} className={`relative group w-20 hover:cursor-pointer ${thumb === 1 ? `outline-3 rounded-xl outline-orange-600` 
+            <div onClick={() => setThumb(1)} className={`relative group w-15 xl:w-18 hover:cursor-pointer ${thumb === 1 ? `outline-3 rounded-xl outline-orange-600` 
               : ``}`}>
               <img className='w-full rounded-xl' src={image_product_1_thumbnail} alt="" />
               <div
                 className={`rounded-xl absolute inset-0 bg-white/50 opacity-0 ${thumb === 1 ? `opacity-100` : `group-hover:opacity-100` } transition-opacity`}
               ></div>
             </div>
-            <div onClick={() => setThumb(2)} className={`relative w-20 group hover:cursor-pointer ${thumb === 2 ? `outline-3 rounded-xl outline-orange-600` 
+            <div onClick={() => setThumb(2)} className={`relative w-15 xl:w-18 group hover:cursor-pointer ${thumb === 2 ? `outline-3 rounded-xl outline-orange-600` 
               : ``}`}>
               <img className='w-full rounded-xl' src={image_product_2_thumbnail} alt="" />
               <div
                 className={`rounded-xl absolute inset-0 bg-white/50 opacity-0 ${thumb === 2 ? `opacity-100` : `group-hover:opacity-100` } transition-opacity`}
               ></div>
             </div>
-            <div onClick={() => setThumb(3)} className={`relative w-20 group hover:cursor-pointer ${thumb === 3 ? `outline-3 rounded-xl outline-orange-600` 
+            <div onClick={() => setThumb(3)} className={`relative w-15 xl:w-18 group hover:cursor-pointer ${thumb === 3 ? `outline-3 rounded-xl outline-orange-600` 
               : ``}`}>
               <img className='w-full rounded-xl' src={image_product_3_thumbnail} alt="" />
               <div
                 className={`rounded-xl absolute inset-0 bg-white/50 opacity-0 ${thumb === 3 ? `opacity-100` : `group-hover:opacity-100` } transition-opacity`}
               ></div>
             </div>
-            <div onClick={() => setThumb(4)} className={`relative w-20 group hover:cursor-pointer ${thumb === 4 ? `outline-3 rounded-xl outline-orange-600` 
+            <div onClick={() => setThumb(4)} className={`relative w-15 xl:w-18 group hover:cursor-pointer ${thumb === 4 ? `outline-3 rounded-xl outline-orange-600` 
               : ``}`}>
               <img className='w-full rounded-xl' src={image_product_4_thumbnail} alt="" />
               <div
