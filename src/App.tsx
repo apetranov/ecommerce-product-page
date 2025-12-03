@@ -72,13 +72,13 @@ function App() {
             <div className='absolute inset-0 flex items-center justify-between p-4'>
               <button
                 onClick={() => setLightBoxThumb(lightBoxThumb === 1 ? 4 : lightBoxThumb - 1)}
-                className='bg-black/50 text-white p-3 rounded-full hover:bg-black/70 transition'
+                className='bg-black/50 text-white p-3 rounded-full hover:bg-black/70 transition hover:cursor-pointer'
               >
                 ‹
               </button>
               <button
                 onClick={() => setLightBoxThumb(lightBoxThumb === 4 ? 1 : lightBoxThumb + 1)}
-                className='bg-black/50 text-white p-3 rounded-full hover:bg-black/70 transition'
+                className='bg-black/50 text-white p-3 rounded-full hover:bg-black/70 transition hover:cursor-pointer'
               >
                 ›
               </button>
