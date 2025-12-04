@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import './App.css'
 import logo from './assets/images/logo.svg'
 import cart from './assets/images/icon-cart.svg'
@@ -23,6 +23,7 @@ function App() {
   const [amount, setAmount] = useState(0);
   const [openLightBox, setOpenLightBox] = useState(false);
   const [lightBoxThumb, setLightBoxThumb] = useState(thumb);
+  const [showMobileNavbar, setShowMobileNavbar] = useState(true);
 
   const incrementAmount = () => {
     setAmount(amount + 1);
@@ -52,12 +53,48 @@ function App() {
   const currentImage = images[thumb - 1];  // thumb is 1–4
   const total = images.length;
 
+  useEffect(() => {
+    if (isMedium) {
+      setShowMobileNavbar(false);
+    }
+  }, [isMedium]);
+
+
   const currentLightboxImage = images[lightBoxThumb - 1];
 
 
   return (
     <div className='lg:px-30 font-display lg:space-y-3'>
-      {openLightBox && isMedium ? <div className="fixed inset-0 bg-black/60 z-90 h-screen w-screen flex flex-col justify-center items-center space-y-3">
+      {showMobileNavbar && isMobile ? (
+        <div className="fixed inset-0 z-50 flex">
+          {/* Transparent Black Overlay */}
+          <div
+            onClick={() => setShowMobileNavbar(false)}
+            className="absolute inset-0 bg-black/50"
+          ></div>
+
+          {/* Sliding Navbar */}
+          <div
+            className="relative z-50 h-full w-[60%] bg-white shadow-lg transform
+                      transition-transform duration-300 ease-out translate-x-0"
+          >
+            <div className="p-4">
+              <h2 className="text-xl font-semibold mb-4">Menu</h2>
+              <ul className="space-y-2">
+                <li className="p-2 rounded hover:bg-gray-100">Collections</li>
+                <li className="p-2 rounded hover:bg-gray-100">Men</li>
+                <li className="p-2 rounded hover:bg-gray-100">Women</li>
+                <li className="p-2 rounded hover:bg-gray-100">About</li>
+                <li className="p-2 rounded hover:bg-gray-100">Contact</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      ) : null}
+
+
+      
+      {openLightBox && isMedium ? <div className="fixed inset-0 bg-black/50 z-90 h-screen w-screen flex flex-col justify-center items-center space-y-3">
         
           <div onClick={() => setOpenLightBox(false)} className='bg-white p-5 rounded-full hover:cursor-pointer hover:bg-gray-200 duration-300 ease-in-out'>
             <img  src={icon_close} alt="" />
@@ -121,8 +158,8 @@ function App() {
 
       <div className='sticky top-0 p-5 bg-white z-50 flex justify-between lg:border-b border-gray-200'>
         <div className='flex justify-start items-center gap-15'>
-          <div className='flex flex-row justify-center gap-3 items-center'>
-            <img className='flex md:hidden' src={icon_menu} alt="Hamburger menu icon" />
+          <div className='flex flex-row justify-center gap-5 items-center'>
+            <img onClick={() => setShowMobileNavbar(!showMobileNavbar)} className='flex md:hidden' src={icon_menu} alt="Hamburger menu icon" />
             <img className='w-full' src={logo} alt="Sneakers brand logo" />
           </div>
           <div className='hidden text-gray-500 md:flex gap-5'>
@@ -134,9 +171,9 @@ function App() {
           </div>
         </div>
         
-        <div className='flex flex-row justify-center items-center gap-4 md:gap-10'>
+        <div className='flex flex-row justify-end md:justify-center items-center gap-3 md:gap-10'>
           <img className='w-[20%] md:w-[15%]' src={cart} alt="Shopping cart icon" />
-          <img className='w-[30%] md:w-[30%]' src={avatar} alt="Avatar image" />
+          <img className='w-[20%] md:w-[30%]' src={avatar} alt="Avatar image" />
         </div>
       </div>
       
@@ -208,7 +245,7 @@ function App() {
             </div>
 
           <div className='flex flex-col gap-5'>
-            <p className='text-gray-500 text-xs lg:text-sm xl:text-base'>These low-profile sneakers are your perfect casual wear companion. Featuring a 
+            <p className='text-gray-500 md:text-xs lg:text-sm xl:text-base'>These low-profile sneakers are your perfect casual wear companion. Featuring a 
           durable rubber outer sole, they’ll withstand everything the weather can offer.</p>
 
           <div className='flex md:flex-col flex-row justify-between gap-4'>
