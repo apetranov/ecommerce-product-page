@@ -60,7 +60,7 @@ function App() {
   }, [isMedium]);
 
 
-  const currentLightboxImage = images[lightBoxThumb - 1];
+  // const currentLightboxImage = images[lightBoxThumb - 1];
 
 
   return (
@@ -163,11 +163,11 @@ function App() {
             <img className='w-full' src={logo} alt="Sneakers brand logo" />
           </div>
           <div className='hidden text-gray-500 md:flex gap-5'>
-            <span>Collections</span>
-            <span>Men</span>
-            <span>Women</span>
-            <span>About</span>
-            <span>Contact</span>
+            <span className='hover:underline duration-300 hover:cursor-pointer underline-offset-8 decoration-orange-400 decoration-3 hover:text-black'>Collections</span>
+            <span className='hover:underline hover:cursor-pointer underline-offset-8 decoration-orange-400 decoration-3 hover:text-black'>Men</span>
+            <span className='hover:underline hover:cursor-pointer underline-offset-8 decoration-orange-400 decoration-3 hover:text-black'>Women</span>
+            <span className='hover:underline hover:cursor-pointer underline-offset-8 decoration-orange-400 decoration-3 hover:text-black'>About</span>
+            <span className='hover:underline hover:cursor-pointer underline-offset-8 decoration-orange-400 decoration-3 hover:text-black'>Contact</span>
           </div>
         </div>
         
