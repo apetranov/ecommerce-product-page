@@ -21,4 +21,4 @@ Saw this intermideate challenge on Frontend Mentor and I really wanted to push m
 4. Open ``http://localhost:5173`` in your browser
 
 # 📽️ Video demo
-https://github.com/user-attachments/assets/606e0862-c9ff-4266-8d39-a853c34ec3ba
+https://github.com/user-attachments/assets/a1098b2a-1bd6-4e61-83b1-cde92a421f3b
