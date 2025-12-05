@@ -220,7 +220,11 @@ function App() {
               </div>
             </div>
             <img
-              onClick={() => setCartItems(0)}
+              onClick={() => 
+                {
+                  setCartItems(0)
+                  toast("✅ Cart emptied")}
+              }
               className="w-[3%] lg:w-[5%] hover:cursor-pointer"
               src={icon_delete}
               alt=""
@@ -288,9 +292,12 @@ function App() {
               </div>
 
               <img 
-                onClick={() => setCartItems(0)} 
+                onClick={() => {
+                  setCartItems(0);
+                  toast("✅ Cart emptied")
+                }} 
                 className="w-[4%] hover:cursor-pointer" 
-                src={icon_delete} 
+                src={icon_delete}
                 alt="" 
               />
             </div>
