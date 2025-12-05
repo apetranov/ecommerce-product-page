@@ -12,4 +12,8 @@ A product page which allows users to see and use an image carousel both on bigge
 - Reponsive navbar/menu
 
 # 🛠️ The process
-Saw this intermideate challenge on Frontend Mentor and I really wanted to push myslef beyond my limit. Took me about 5 days with a couple owers every day to finish this.
+Saw this intermideate challenge on Frontend Mentor and I really wanted to push myself beyond my limit. Took me about 5 days with a couple hours of work every day to finish this.
+
+# 🏃‍♂️‍➡️ Running the project
+1. Clone this repo
+2. Install dependencies ``bash npm install``
