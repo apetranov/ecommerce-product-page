@@ -16,4 +16,6 @@ Saw this intermideate challenge on Frontend Mentor and I really wanted to push m
 
 # 🏃‍♂️‍➡️ Running the project
 1. Clone this repo
-2. Install dependencies ``bash npm install``
+2. Install dependencies: ``npm install``
+3. Run development server: ``npm run dev``
+4. Open ``http://localhost:5173`` in your browser
