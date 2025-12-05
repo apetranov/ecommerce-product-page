@@ -1,5 +1,7 @@
 import { useState, useEffect } from 'react'
 import './App.css'
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import logo from './assets/images/logo.svg'
 import cart from './assets/images/icon-cart.svg'
 import avatar from './assets/images/image-avatar.png'
@@ -17,6 +19,7 @@ import icon_menu from './assets/images/icon-menu.svg'
 import icon_close from './assets/images/icon-close.svg'
 import useScreenWidth from "./useScreenWidth";
 import ImageWithArrows from './ImageWithArrows'
+import icon_delete from './assets/images/icon-delete.svg'
 
 function App() {
   const [thumb, setThumb] = useState(1);
@@ -24,10 +27,19 @@ function App() {
   const [openLightBox, setOpenLightBox] = useState(false);
   const [lightBoxThumb, setLightBoxThumb] = useState(thumb);
   const [showMobileNavbar, setShowMobileNavbar] = useState(true);
+  const [openCart, setOpenCart] = useState(false);
+  const [cartItems, setCartItems] = useState(0);
+  const [totalPrice, setTotalPrice] = useState(0);
 
   const incrementAmount = () => {
     setAmount(amount + 1);
   }
+
+  useEffect(() => {
+    if (cartItems) {
+      setTotalPrice(cartItems * 125);
+    }
+  }, [cartItems])
 
   const decrementAmount = () => {
     if (amount === 0) {
@@ -60,11 +72,20 @@ function App() {
   }, [isMedium]);
 
 
-  // const currentLightboxImage = images[lightBoxThumb - 1];
-
-
   return (
     <div className='lg:px-30 font-display lg:space-y-3'>
+      <ToastContainer 
+        position="top-right" 
+        autoClose={3000} 
+        hideProgressBar={false} 
+        newestOnTop={false} 
+        closeOnClick 
+        rtl={false} 
+        pauseOnFocusLoss 
+        draggable 
+        pauseOnHover 
+      />
+
       {showMobileNavbar && isMobile ? (
         <div className="fixed inset-0 z-50 flex">
           {/* Transparent Black Overlay */}
@@ -172,11 +193,136 @@ function App() {
         </div>
         
         <div className='flex flex-row justify-end md:justify-center items-center gap-3 md:gap-10'>
-          <img className='w-[20%] md:w-[15%]' src={cart} alt="Shopping cart icon" />
-          <img className='w-[20%] md:w-[30%]' src={avatar} alt="Avatar image" />
+          <img onClick={() => setOpenCart(!openCart)} className="hover:cursor-pointer w-[20%] md:w-[15%]"  src={cart} alt="Shopping cart icon" />
+          <img className='hover:cursor-pointer w-[20%] md:w-[30%]' src={avatar} alt="Avatar image" />
         </div>
       </div>
       
+      {openCart && isMedium && (
+  <div
+    className="fixed inset-0 z-40"
+    onClick={() => setOpenCart(false)} // closes when clicking outside
+  >
+    <div
+      className="absolute top-30 right-10 mt-2 w-[70%] md:[50%] lg:w-[40%] xl:w-[30%] bg-white rounded-xl shadow-2xl z-100 p-5"
+      onClick={(e) => e.stopPropagation()} // clicking inside DOES NOT close
+    >
+      <p className="font-semibold">Cart</p>
+      {cartItems ? (
+        <div className="flex flex-col justify-center items-center gap-3">
+          <div className="flex justify-center items-center gap-6">
+            <img className="w-[20%]" src={image_product_1} alt="" />
+            <div className="flex flex-col gap-2">
+              <span className="text-gray-500">Fall limited edition sneakers</span>
+              <div className="flex gap-3">
+                <span className="text-gray-500">$125.00 x {cartItems}</span>
+                <h1 className="font-bold">${totalPrice}.00</h1>
+              </div>
+            </div>
+            <img
+              onClick={() => setCartItems(0)}
+              className="w-[3%] lg:w-[5%] hover:cursor-pointer"
+              src={icon_delete}
+              alt=""
+            />
+          </div>
+          <div
+            onClick={() => {
+              setCartItems(0);
+              toast("✅ Order successful");
+              setAmount(0);
+            }}
+            className="bg-orange-400 flex justify-center items-center w-full py-3 rounded-lg gap-2 hover:bg-orange-300 hover:cursor-pointer duration-300 ease-in-out"
+          >
+            <span className="font-bold">Checkout</span>
+          </div>
+        </div>
+      ) : (
+        <p className="text-gray-500 text-sm mt-1">Cart is empty.</p>
+      )}
+    </div>
+  </div>
+)}
+
+
+  {openCart && isMobile && (
+    <div
+      className="
+        fixed inset-0 
+        flex justify-center items-center
+        z-100"
+      onClick={() => setOpenCart(false)} // close when clicking backdrop
+    >
+      {/* STOP CLICK FROM CLOSING CART */}
+      <div
+        className="
+          bg-white 
+          w-[90%] 
+          rounded-xl 
+          shadow-2xl 
+          p-5 outline-1
+          flex flex-col justify-center items-center
+        "
+        onClick={(e) => e.stopPropagation()} // prevents outside click from triggering
+      >
+        <p className="font-semibold mb-3">Cart</p>
+
+        {cartItems ? (
+          <div className="flex flex-col justify-center items-center gap-4">
+
+            <div className="flex justify-center items-center gap-5">
+              <img className="w-[20%]" src={image_product_1} alt="" />
+              <div className="flex flex-col">
+                <span className="text-gray-500 text-sm">
+                  Fall limited edition sneakers
+                </span>
+
+                <div className="flex gap-3 text-sm">
+                  <span className="text-gray-500">
+                    $125.00 x {cartItems}
+                  </span>
+                  <span className="font-bold">
+                    ${totalPrice}.00
+                  </span>
+                </div>
+              </div>
+
+              <img 
+                onClick={() => setCartItems(0)} 
+                className="w-[4%] hover:cursor-pointer" 
+                src={icon_delete} 
+                alt="" 
+              />
+            </div>
+
+            <button
+              onClick={() => {
+                setCartItems(0);
+                toast("✅ Order successful");
+                setAmount(0);
+              }}
+              className="
+                bg-orange-400 
+                text-white 
+                w-full 
+                py-3 
+                rounded-lg 
+                font-bold 
+                hover:bg-orange-300
+                hover:cursor-pointer
+                duration-300
+              "
+            >
+              Checkout
+            </button>
+
+          </div>
+        ) : (
+          <p className="text-gray-500 text-sm">Cart is empty.</p>
+        )}
+      </div>
+    </div>
+  )}
 
       <div className='flex flex-col md:flex-row md:h-screen 2xl:h-full md:p-5 justify-center items-center xl:px-20 xl:py-5 gap-5 xl:gap-10'>
         <div className='flex justify-center items-center flex-col gap-4 w-full md:w-1/2'>
@@ -264,10 +410,13 @@ function App() {
               <span className='font-bold'>{amount}</span>
               <img className='hover:cursor-pointer' onClick={incrementAmount} src={icon_plus} alt="" />
             </div>
-          <div className='bg-orange-400 flex justify-center items-center w-full py-3 rounded-lg gap-2 hover:bg-orange-300 hover:cursor-pointer duration-300 ease-in-out'>
+          <div onClick={() => {
+            setCartItems(amount);
+            toast(`${amount} item/s added to cart`)
+          }} className='bg-orange-400 flex justify-center items-center w-full py-3 rounded-lg gap-2 hover:bg-orange-300 hover:cursor-pointer duration-300 ease-in-out'>
             <img className='lg:w-[10%]' src={cart} alt="Shopping cart icon" />
             
-            <span className='font-bold'>
+            <span  className='font-bold'>
                 Add to cart
             </span>
           </div>
