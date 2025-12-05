@@ -19,3 +19,6 @@ Saw this intermideate challenge on Frontend Mentor and I really wanted to push m
 2. Install dependencies: ``npm install``
 3. Run development server: ``npm run dev``
 4. Open ``http://localhost:5173`` in your browser
+
+
+https://github.com/user-attachments/assets/606e0862-c9ff-4266-8d39-a853c34ec3ba
