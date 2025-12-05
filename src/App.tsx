@@ -26,7 +26,7 @@ function App() {
   const [amount, setAmount] = useState(0);
   const [openLightBox, setOpenLightBox] = useState(false);
   const [lightBoxThumb, setLightBoxThumb] = useState(thumb);
-  const [showMobileNavbar, setShowMobileNavbar] = useState(true);
+  const [showMobileNavbar, setShowMobileNavbar] = useState(false);
   const [openCart, setOpenCart] = useState(false);
   const [cartItems, setCartItems] = useState(0);
   const [totalPrice, setTotalPrice] = useState(0);
