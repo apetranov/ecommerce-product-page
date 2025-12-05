@@ -204,7 +204,7 @@ function App() {
     onClick={() => setOpenCart(false)} // closes when clicking outside
   >
     <div
-      className="absolute top-30 right-10 mt-2 w-[70%] md:[50%] lg:w-[40%] xl:w-[30%] bg-white rounded-xl shadow-2xl z-100 p-5"
+      className="absolute top-25 right-10 mt-2 w-[70%] md:[50%] lg:w-[40%] xl:w-[30%] bg-white rounded-xl shadow-2xl  z-100 p-5"
       onClick={(e) => e.stopPropagation()} // clicking inside DOES NOT close
     >
       <p className="font-semibold">Cart</p>
@@ -260,7 +260,7 @@ function App() {
           w-[90%] 
           rounded-xl 
           shadow-2xl 
-          p-5 outline-1
+          p-5
           flex flex-col justify-center items-center
         "
         onClick={(e) => e.stopPropagation()} // prevents outside click from triggering
